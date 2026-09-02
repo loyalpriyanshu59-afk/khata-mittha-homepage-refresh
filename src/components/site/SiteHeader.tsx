@@ -32,7 +32,7 @@ export function SiteHeader() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "border-b border-border/70 bg-background/85 backdrop-blur-xl"
+          ? "border-b border-border/70 bg-background/90 backdrop-blur-xl"
           : "border-b border-transparent"
       }`}
     >
@@ -46,7 +46,7 @@ export function SiteHeader() {
             <a
               key={item.href}
               href={item.href}
-              className="relative text-sm font-medium text-ink-soft transition-colors hover:text-ink after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+              className="relative text-sm font-medium uppercase tracking-wider text-ink-soft transition-colors hover:text-ink after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
               {item.label}
             </a>
@@ -56,7 +56,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <a
             href="#order"
-            className="hidden rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-glow)] transition-transform duration-300 hover:-translate-y-0.5 md:inline-flex"
+            className="hidden rounded-full bg-ink px-6 py-2.5 text-sm font-semibold text-cream transition-colors hover:bg-primary md:inline-flex"
           >
             Order Now
           </a>
@@ -88,7 +88,7 @@ export function SiteHeader() {
             <a
               href="#order"
               onClick={() => setOpen(false)}
-              className="mt-5 rounded-full bg-primary px-6 py-4 text-center text-base font-semibold text-primary-foreground"
+              className="mt-5 rounded-full bg-ink px-6 py-4 text-center text-base font-semibold text-cream"
             >
               Order Now
             </a>

@@ -6,6 +6,7 @@ import pineapple from "@/assets/juice-pineapple.jpg";
 
 const JUICES = [
   {
+    n: "01",
     name: "Orange",
     note: "Nagpur navels, bright and sunny",
     price: "₹149",
@@ -13,6 +14,7 @@ const JUICES = [
     alt: "Bottle of fresh Khata MiTtha orange juice with orange slices",
   },
   {
+    n: "02",
     name: "Mosambi",
     note: "Sweet lime, gentle on the gut",
     price: "₹139",
@@ -20,6 +22,7 @@ const JUICES = [
     alt: "Bottle of fresh mosambi sweet lime juice with green limes",
   },
   {
+    n: "03",
     name: "Mango",
     note: "Seasonal Alphonso, thick and golden",
     price: "₹179",
@@ -27,6 +30,7 @@ const JUICES = [
     alt: "Bottle of Alphonso mango juice with ripe mangoes",
   },
   {
+    n: "04",
     name: "Pineapple",
     note: "Tangy, tropical, lightly salted",
     price: "₹159",
@@ -34,6 +38,7 @@ const JUICES = [
     alt: "Bottle of pineapple juice with fresh pineapple slices",
   },
   {
+    n: "05",
     name: "Mixed Fruit",
     note: "Our house blend of five fruits",
     price: "₹169",
@@ -44,12 +49,12 @@ const JUICES = [
 
 export function FeaturedJuices() {
   return (
-    <section id="juices" className="scroll-mt-24 py-20 sm:py-28">
+    <section id="juices" className="scroll-mt-24 bg-cream-deep py-20 sm:py-28">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
         <div className="reveal flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-              The Bottles
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+              The Collection
             </span>
             <h2 className="text-balance-tight mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-5xl">
               Five pressings. One promise.
@@ -60,47 +65,35 @@ export function FeaturedJuices() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {JUICES.map((j, i) => (
             <article
               key={j.name}
-              className="reveal group overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-[var(--shadow-soft)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lift)]"
-              style={{ transitionDelay: `${i * 60}ms` }}
+              className={`reveal group cursor-pointer ${i === 1 ? "lg:mt-12" : ""} ${i === 4 ? "sm:col-span-2 lg:col-span-1" : ""}`}
+              style={{ transitionDelay: `${i * 70}ms` }}
             >
-              <div className="overflow-hidden">
+              <div className="relative overflow-hidden bg-[#e8c07a]">
                 <img
                   src={j.img}
                   alt={j.alt}
                   loading="lazy"
-                  width={800}
-                  height={1000}
-                  className="h-64 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 sm:h-72"
+                  width={600}
+                  height={750}
+                  className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-              </div>
-              <div className="flex items-end justify-between gap-4 p-6">
-                <div>
-                  <h3 className="font-display text-2xl font-semibold text-ink">{j.name}</h3>
-                  <p className="mt-1.5 text-sm text-ink-soft">{j.note}</p>
+                <div className="absolute bottom-0 right-0 bg-cream p-4">
+                  <span className="font-display text-xl text-ink">{j.n}</span>
                 </div>
-                <span className="shrink-0 rounded-full bg-secondary px-4 py-2 text-sm font-semibold text-ink">
-                  {j.price}
-                </span>
+              </div>
+              <div className="mt-6 flex items-end justify-between border-b border-[#e8c07a] pb-4">
+                <div>
+                  <h3 className="font-display text-2xl text-ink">{j.name}</h3>
+                  <p className="mt-1 text-xs uppercase tracking-tighter text-ink-soft">{j.note}</p>
+                </div>
+                <span className="font-display text-xl text-[#cd7f32]">{j.price}</span>
               </div>
             </article>
           ))}
-
-          <a
-            href="#order"
-            className="reveal group flex min-h-56 flex-col justify-between rounded-[1.75rem] border border-dashed border-primary/40 bg-primary/8 p-7 transition-all duration-500 hover:-translate-y-1.5 hover:bg-primary/14"
-          >
-            <p className="font-display text-2xl font-semibold leading-snug text-ink">
-              Can&apos;t choose? Take the weekly six-pack.
-            </p>
-            <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary">
-              Build your box
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </span>
-          </a>
         </div>
       </div>
     </section>
