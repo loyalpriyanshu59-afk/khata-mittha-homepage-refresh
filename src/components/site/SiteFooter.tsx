@@ -1,45 +1,52 @@
-import { Brandmark } from "./Brandmark";
+const SHOP_LINKS = [
+  { label: "Orange Juice", href: "#juices" },
+  { label: "Mosambi Juice", href: "#juices" },
+  { label: "Mango Juice", href: "#juices" },
+  { label: "Pineapple Juice", href: "#juices" },
+];
 
-const COLUMNS = [
-  {
-    title: "Shop",
-    links: [
-      { label: "All Juices", href: "#juices" },
-      { label: "Weekly Box", href: "#order" },
-      { label: "Gifting", href: "#order" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "Our Story", href: "#story" },
-      { label: "Our Process", href: "#process" },
-      { label: "Why Khata MiTtha", href: "#why" },
-    ],
-  },
+const COMPANY_LINKS = [
+  { label: "Our Story", href: "#story" },
+  { label: "Process", href: "#process" },
+  { label: "Why Us", href: "#why" },
+  { label: "Contact", href: "#order" },
 ];
 
 export function SiteFooter() {
-  return (
-    <footer className="border-t border-border bg-cream-deep">
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-5 py-14 sm:px-8 sm:py-16 md:grid-cols-[1.4fr_1fr_1fr]">
-        <div>
-          <Brandmark />
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft">
-            Cold-pressed fruit juice, bottled fresh every morning. Made in India, with nothing
-            added.
-          </p>
-        </div>
+  const year = new Date().getFullYear();
 
-        {COLUMNS.map((col) => (
-          <div key={col.title}>
-            <h3 className="font-display text-base font-semibold text-ink">{col.title}</h3>
-            <ul className="mt-4 space-y-3">
-              {col.links.map((l) => (
+  return (
+    <footer className="bg-cream-deep py-16 sm:py-20">
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-5">
+            <a href="#top" className="inline-block">
+              <span className="font-display text-3xl text-ink">Khata</span>{" "}
+              <span className="font-display text-3xl italic text-primary">MiTtha</span>
+            </a>
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-ink-soft">
+              Premium cold-pressed juices made from real Indian fruit. No sugar. No shortcuts. Just
+              the honest taste of the orchard.
+            </p>
+            <p className="mt-6 text-sm text-ink-soft">
+              <a href="mailto:hello@khatamittha.in" className="underline-offset-4 hover:underline">
+                hello@khatamittha.in
+              </a>
+              <br />
+              <a href="tel:+919800000000" className="underline-offset-4 hover:underline">
+                +91 98000 00000
+              </a>
+            </p>
+          </div>
+
+          <div className="lg:col-span-2 lg:col-start-7">
+            <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-ink">Shop</h4>
+            <ul className="mt-5 space-y-3">
+              {SHOP_LINKS.map((l) => (
                 <li key={l.label}>
                   <a
                     href={l.href}
-                    className="text-sm text-ink-soft transition-colors hover:text-primary"
+                    className="text-sm text-ink-soft transition-colors hover:text-ink"
                   >
                     {l.label}
                   </a>
@@ -47,13 +54,48 @@ export function SiteFooter() {
               ))}
             </ul>
           </div>
-        ))}
-      </div>
 
-      <div className="border-t border-border/70">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-5 py-6 text-xs text-ink-soft sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p>© {new Date().getFullYear()} Khata MiTtha Beverages. All rights reserved.</p>
-          <p>hello@khatamittha.in · +91 98000 00000</p>
+          <div className="lg:col-span-2">
+            <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-ink">Company</h4>
+            <ul className="mt-5 space-y-3">
+              {COMPANY_LINKS.map((l) => (
+                <li key={l.label}>
+                  <a
+                    href={l.href}
+                    className="text-sm text-ink-soft transition-colors hover:text-ink"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-ink">Hours</h4>
+            <p className="mt-5 text-sm text-ink-soft">
+              Pressing starts at 5:00 AM
+              <br />
+              Same-day delivery: 10 AM — 7 PM
+              <br />
+              Seven days a week
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
+          <p className="text-xs text-ink-soft">© {year} Khata MiTtha. All rights reserved.</p>
+          <div className="flex gap-6 text-xs text-ink-soft">
+            <a href="#" className="hover:text-ink">
+              Privacy
+            </a>
+            <a href="#" className="hover:text-ink">
+              Terms
+            </a>
+            <a href="#" className="hover:text-ink">
+              Shipping
+            </a>
+          </div>
         </div>
       </div>
     </footer>

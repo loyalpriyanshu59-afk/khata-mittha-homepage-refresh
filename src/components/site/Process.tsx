@@ -1,46 +1,63 @@
-import processImg from "@/assets/process.jpg";
+import process from "@/assets/process.jpg";
 
 const STEPS = [
-  { n: "01", t: "Picked at dawn", d: "Farm crates reach our press by 5am, still cool from the night." },
-  { n: "02", t: "Washed & sorted", d: "Triple-rinsed in filtered water; bruised fruit never makes the cut." },
-  { n: "03", t: "Cold-pressed", d: "Slow hydraulic pressing, zero heat, zero oxidation shortcuts." },
-  { n: "04", t: "Bottled & chilled", d: "Sealed in glass within four hours and kept at 4°C to your door." },
+  {
+    title: "Select",
+    desc: "Fruit is hand-checked at the market before it reaches our kitchen.",
+  },
+  {
+    title: "Wash",
+    desc: "Triple-rinsed in filtered water, then air-dried naturally.",
+  },
+  {
+    title: "Press",
+    desc: "Slow cold-pressing keeps enzymes alive and flavour intact.",
+  },
+  {
+    title: "Bottle",
+    desc: "Filled, sealed and chilled within minutes — delivered the same day.",
+  },
 ];
 
 export function Process() {
   return (
-    <section id="process" className="scroll-mt-24 py-20 sm:py-28">
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
-        <div className="reveal order-2 lg:order-1">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+    <section id="process" className="scroll-mt-24 bg-cream-deep py-20 sm:py-28">
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
+        <div className="reveal text-center">
+          <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
             From Fruit to Bottle
           </span>
-          <h2 className="text-balance-tight mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-5xl">
-            Four hours, four steps, nothing in between.
+          <h2 className="text-balance-tight mx-auto mt-4 max-w-2xl font-display text-3xl font-semibold tracking-tight text-ink sm:text-5xl">
+            Four steps. No secrets.
           </h2>
-
-          <ol className="mt-10 space-y-7">
-            {STEPS.map((s) => (
-              <li key={s.n} className="flex gap-5 border-b border-border pb-7 last:border-0 last:pb-0">
-                <span className="font-display text-lg font-semibold text-primary">{s.n}</span>
-                <div>
-                  <h3 className="font-display text-xl font-semibold text-ink">{s.t}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{s.d}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
         </div>
 
-        <div className="reveal order-1 lg:order-2">
-          <img
-            src={processImg}
-            alt="Fresh oranges being cold-pressed by hand at the Khata MiTtha juicery in morning light"
-            loading="lazy"
-            width={1280}
-            height={912}
-            className="h-[22rem] w-full rounded-[2rem] object-cover shadow-[var(--shadow-lift)] sm:h-[32rem] sm:rounded-[2.5rem]"
-          />
+        <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="reveal relative overflow-hidden rounded-[2rem] bg-[#e8c07a] sm:rounded-[2.5rem]">
+            <img
+              src={process}
+              alt="Fresh oranges being prepared and cold-pressed in a clean juice kitchen"
+              loading="lazy"
+              width={1280}
+              height={900}
+              className="aspect-[4/3] w-full object-cover"
+            />
+            <div className="absolute bottom-5 left-5 hidden rounded-full bg-cream px-5 py-2 text-xs font-semibold uppercase tracking-widest text-ink sm:inline-block">
+              Cold-pressed in India
+            </div>
+          </div>
+
+          <div className="reveal grid gap-8 sm:gap-10">
+            {STEPS.map((s, i) => (
+              <div key={s.title} className="flex gap-6 border-b border-[#e8c07a]/60 pb-8 last:border-0 last:pb-0">
+                <span className="font-display text-2xl text-[#cd7f32]">0{i + 1}</span>
+                <div>
+                  <h3 className="font-display text-2xl text-ink">{s.title}</h3>
+                  <p className="mt-1 max-w-md text-sm leading-relaxed text-ink-soft">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

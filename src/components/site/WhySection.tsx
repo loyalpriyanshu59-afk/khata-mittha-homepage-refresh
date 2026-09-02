@@ -1,55 +1,58 @@
-import { Droplets, Leaf, Snowflake, Sprout } from "lucide-react";
-
-const POINTS = [
+const REASONS = [
   {
-    icon: Leaf,
+    num: "01",
     title: "100% Natural",
-    body: "Fruit, and that's the whole list. No concentrates, colours or preservatives.",
+    body: "Every drop is pure fruit — no concentrates, no preservatives, no shortcuts.",
   },
   {
-    icon: Droplets,
+    num: "02",
     title: "No Sugar Added",
-    body: "Sweetness comes from ripeness. We pick later so you don't need syrup.",
+    body: "We trust the fruit’s own sweetness. Nothing else needs to go in the bottle.",
   },
   {
-    icon: Snowflake,
+    num: "03",
     title: "Cold-Pressed Daily",
-    body: "Hydraulic pressed without heat, so vitamins and enzymes stay intact.",
+    body: "Pressed in small batches each morning and chilled immediately for clean flavour.",
   },
   {
-    icon: Sprout,
+    num: "04",
     title: "Fresh Ingredients",
-    body: "Sourced each morning from farms we visit, not from cold storage.",
+    body: "Sourced from local orchards and markets within 24 hours of juicing.",
   },
 ];
 
 export function WhySection() {
   return (
-    <section id="why" className="scroll-mt-24 bg-cream-deep py-20 sm:py-28">
+    <section id="why" className="scroll-mt-24 py-20 sm:py-28">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-        <div className="reveal max-w-2xl">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-leaf">
-            Why Khata MiTtha
-          </span>
-          <h2 className="text-balance-tight mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-5xl">
-            Honest juice is a short ingredient list.
-          </h2>
-        </div>
+        <div className="reveal grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+              Why Khata MiTtha
+            </span>
+            <h2 className="text-balance-tight mt-4 font-display text-3xl font-semibold tracking-tight text-ink sm:text-5xl">
+              Taste the difference honesty makes.
+            </h2>
+            <p className="mt-5 max-w-sm text-ink-soft">
+              We built Khata MiTtha around one rule: if we wouldn't serve it at our own table, it
+              doesn't leave the kitchen.
+            </p>
+          </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {POINTS.map((p, i) => (
-            <div
-              key={p.title}
-              className="reveal rounded-[1.5rem] border border-border/70 bg-card p-7 shadow-[var(--shadow-soft)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
-              style={{ transitionDelay: `${i * 70}ms` }}
-            >
-              <span className="inline-flex size-12 items-center justify-center rounded-2xl bg-primary/12 text-primary">
-                <p.icon className="size-6" />
-              </span>
-              <h3 className="mt-6 font-display text-xl font-semibold text-ink">{p.title}</h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-ink-soft">{p.body}</p>
-            </div>
-          ))}
+          <div className="grid gap-8 sm:grid-cols-2 lg:col-span-8 lg:gap-x-12 lg:gap-y-14">
+            {REASONS.map((r) => (
+              <div key={r.num} className="reveal group">
+                <div className="flex items-start justify-between border-b border-[#e8c07a] pb-4">
+                  <span className="font-display text-4xl text-[#e8c07a] transition-colors group-hover:text-[#cd7f32]">
+                    {r.num}
+                  </span>
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary" />
+                </div>
+                <h3 className="mt-5 font-display text-2xl text-ink">{r.title}</h3>
+                <p className="mt-2 max-w-xs text-sm leading-relaxed text-ink-soft">{r.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
